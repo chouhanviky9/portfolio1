@@ -106,7 +106,11 @@ const HeroSection = () => {
 
             {/* Scroll Indicator */}
             <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
-                <a href="#about" className="p-2 rounded-full border border-border hover:border-primary transition-colors">
+                <a
+                    href="#about"
+                    className="p-2 rounded-full border border-border hover:border-primary transition-colors"
+                    aria-label="Scroll to About section"
+                >
                     <ArrowDown className="w-5 h-5 text-muted-foreground" />
                 </a>
             </div>

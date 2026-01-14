@@ -1,6 +1,7 @@
 "use client";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { ExternalLink, Github, X } from "lucide-react";
+import Image from "next/image";
 
 interface Project {
     id: number;
@@ -32,6 +33,7 @@ const ProjectModal = ({ project, isOpen, onClose }: ProjectModalProps) => {
                 <button
                     onClick={onClose}
                     className="absolute right-4 top-4 z-50 p-2 rounded-full bg-background/80 backdrop-blur-sm hover:bg-muted transition-colors"
+                    aria-label="Close modal"
                 >
                     <X className="w-5 h-5" />
                 </button>
@@ -46,10 +48,12 @@ const ProjectModal = ({ project, isOpen, onClose }: ProjectModalProps) => {
                             poster={project.image}
                         />
                     ) : (
-                        <img
+                        <Image
                             src={project.image}
                             alt={project.title}
-                            className="w-full h-full object-cover"
+                            fill
+                            className="object-cover"
+                            sizes="100vw"
                         />
                     )}
                     <div className="absolute inset-0 bg-gradient-to-t from-card via-transparent to-transparent" />
@@ -60,10 +64,10 @@ const ProjectModal = ({ project, isOpen, onClose }: ProjectModalProps) => {
                         <div className="flex items-center gap-3 mb-2">
                             <span
                                 className={`w-3 h-3 rounded-full ${project.color === "primary"
-                                        ? "bg-primary"
-                                        : project.color === "secondary"
-                                            ? "bg-secondary"
-                                            : "bg-accent"
+                                    ? "bg-primary"
+                                    : project.color === "secondary"
+                                        ? "bg-secondary"
+                                        : "bg-accent"
                                     }`}
                             />
                             <span className="text-sm text-muted-foreground">Featured Project</span>
@@ -86,10 +90,10 @@ const ProjectModal = ({ project, isOpen, onClose }: ProjectModalProps) => {
                                 <li key={index} className="flex items-start gap-2 text-muted-foreground text-sm">
                                     <span
                                         className={`w-1.5 h-1.5 rounded-full mt-2 flex-shrink-0 ${project.color === "primary"
-                                                ? "bg-primary"
-                                                : project.color === "secondary"
-                                                    ? "bg-secondary"
-                                                    : "bg-accent"
+                                            ? "bg-primary"
+                                            : project.color === "secondary"
+                                                ? "bg-secondary"
+                                                : "bg-accent"
                                             }`}
                                     />
                                     {feature}
@@ -106,10 +110,10 @@ const ProjectModal = ({ project, isOpen, onClose }: ProjectModalProps) => {
                                 <span
                                     key={index}
                                     className={`px-4 py-2 rounded-full text-sm font-medium ${project.color === "primary"
-                                            ? "bg-primary/10 text-primary"
-                                            : project.color === "secondary"
-                                                ? "bg-secondary/10 text-secondary"
-                                                : "bg-accent/10 text-accent"
+                                        ? "bg-primary/10 text-primary"
+                                        : project.color === "secondary"
+                                            ? "bg-secondary/10 text-secondary"
+                                            : "bg-accent/10 text-accent"
                                         }`}
                                 >
                                     {tech}
@@ -126,10 +130,10 @@ const ProjectModal = ({ project, isOpen, onClose }: ProjectModalProps) => {
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className={`inline-flex items-center gap-2 px-6 py-3 rounded-full font-semibold transition-all duration-300 hover:scale-105 ${project.color === "primary"
-                                        ? "bg-primary text-primary-foreground"
-                                        : project.color === "secondary"
-                                            ? "bg-secondary text-secondary-foreground"
-                                            : "bg-accent text-accent-foreground"
+                                    ? "bg-primary text-primary-foreground"
+                                    : project.color === "secondary"
+                                        ? "bg-secondary text-secondary-foreground"
+                                        : "bg-accent text-accent-foreground"
                                     }`}
                             >
                                 <ExternalLink className="w-4 h-4" />

@@ -97,6 +97,7 @@ const ContactSection = () => {
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         className="p-4 rounded-xl bg-card border border-border hover:border-foreground hover:scale-110 transition-all duration-300"
+                                        aria-label="Visit GitHub Profile"
                                     >
                                         <Github className="w-5 h-5" />
                                     </a>
@@ -105,6 +106,7 @@ const ContactSection = () => {
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         className="p-4 rounded-xl bg-card border border-border hover:border-secondary hover:text-secondary hover:scale-110 transition-all duration-300"
+                                        aria-label="Visit LinkedIn Profile"
                                     >
                                         <Linkedin className="w-5 h-5" />
                                     </a>

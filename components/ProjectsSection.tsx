@@ -1,7 +1,12 @@
 "use client";
 import { useState } from "react";
 import { ExternalLink, Eye } from "lucide-react";
-import ProjectModal from "./ProjectModal";
+import dynamic from "next/dynamic";
+
+const ProjectModal = dynamic(() => import("./ProjectModal"), {
+    ssr: false,
+});
+import Image from "next/image";
 
 const projects = [
     {
@@ -158,21 +163,24 @@ const ProjectsSection = () => {
                             >
                                 {/* Image */}
                                 <div className="relative aspect-[4/3] overflow-hidden">
-                                    <img
+                                    <Image
                                         src={project.image}
                                         alt={project.title}
-                                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                                        fill
+                                        className="object-cover transition-transform duration-500 group-hover:scale-110"
+                                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                                     />
                                     <div className="absolute inset-0 bg-gradient-to-t from-card via-card/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
                                     {/* Overlay Actions */}
                                     <div className="absolute inset-0 flex items-center justify-center gap-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                                         <button
+                                            aria-label={`View ${project.title}`}
                                             className={`p-4 rounded-full backdrop-blur-sm transition-all duration-300 hover:scale-110 ${project.color === "primary"
-                                                    ? "bg-primary/90 text-primary-foreground"
-                                                    : project.color === "secondary"
-                                                        ? "bg-secondary/90 text-secondary-foreground"
-                                                        : "bg-accent/90 text-accent-foreground"
+                                                ? "bg-primary/90 text-primary-foreground"
+                                                : project.color === "secondary"
+                                                    ? "bg-secondary/90 text-secondary-foreground"
+                                                    : "bg-accent/90 text-accent-foreground"
                                                 }`}
                                         >
                                             <Eye className="w-5 h-5" />
@@ -184,6 +192,7 @@ const ProjectsSection = () => {
                                                 rel="noopener noreferrer"
                                                 className="p-4 rounded-full bg-card/90 backdrop-blur-sm hover:scale-110 transition-all duration-300"
                                                 onClick={(e) => e.stopPropagation()}
+                                                aria-label={`View Live Demo for ${project.title}`}
                                             >
                                                 <ExternalLink className="w-5 h-5" />
                                             </a>
@@ -193,10 +202,10 @@ const ProjectsSection = () => {
                                     {/* Color Badge */}
                                     <div
                                         className={`absolute top-4 left-4 w-3 h-3 rounded-full ${project.color === "primary"
-                                                ? "bg-primary"
-                                                : project.color === "secondary"
-                                                    ? "bg-secondary"
-                                                    : "bg-accent"
+                                            ? "bg-primary"
+                                            : project.color === "secondary"
+                                                ? "bg-secondary"
+                                                : "bg-accent"
                                             }`}
                                     />
                                 </div>
