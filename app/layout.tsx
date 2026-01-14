@@ -1,7 +1,21 @@
 import type { Metadata } from "next";
-// import localFont from "next/font/local"; // If you used local fonts
+import { Inter, Space_Grotesk } from "next/font/google"; // Import fonts
 import "./globals.css";
 import { Providers } from "./providers";
+
+// Configure Inter font
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+  display: "swap",
+});
+
+// Configure Space Grotesk font
+const spaceGrotesk = Space_Grotesk({
+  subsets: ["latin"],
+  variable: "--font-space-grotesk",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: "Vikash Kumar | Full-Stack Developer",
@@ -15,7 +29,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="antialiased" suppressHydrationWarning>
+      <body className={`${inter.variable} ${spaceGrotesk.variable} antialiased`} suppressHydrationWarning>
         <Providers>
           {children}
         </Providers>
